@@ -19,7 +19,7 @@ if (auth != null) {
 
 	System.out.println("1 order size->");
 	if (orders == null || orders.size() <= 0) {
-		request.getSession().setAttribute("msg", " You Don't Have any Order, ORDER NOW cs!");
+		request.getSession().setAttribute("msg", " You Don't Have any Order, ORDER NOW!");
 		response.sendRedirect("message.jsp");
 		return;
 	}
@@ -46,11 +46,9 @@ if (cart_list != null) {
 	<%@include file="/components/navbar.jsp"%>
 	<div class="container">
 		<div class="card-header my-3">All Orders</div>
-		<form action="cancelOrderServelet" method="post">
-			<button class="btn btn-danger" type="submit">Cancel Order</button>
-		</form>
+	
 		<%
-		if (orders != null && orders.size() > 0 == false) {
+		if (orders != null && orders.size() > 0 ) {
 		%>
 		<div>
 			Order Status - <b><%=orders.get(0).getStatus()%> </b>
@@ -106,6 +104,9 @@ if (cart_list != null) {
 			</thead>
 			</tbody>
 		</table>
+			<form action="cancelOrderServelet" method="post">
+			<button class="btn btn-danger" type="submit">Cancel Order</button>
+		</form>
 	</div>
 	<%@include file="/components/footer.jsp"%>
 </body>
