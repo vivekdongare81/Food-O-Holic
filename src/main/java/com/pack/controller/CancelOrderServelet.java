@@ -29,10 +29,7 @@ public class CancelOrderServelet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try (PrintWriter out = response.getWriter()) {
@@ -42,13 +39,13 @@ public class CancelOrderServelet extends HttpServlet {
 				JDBC_Order_Methods orderDao = new JDBC_Order_Methods(JDBCCon.getConnection());
 				orderDao.cancelOrder(name);
 			}
-			response.sendRedirect("orders.jsp");
+			request.getSession().setAttribute("msg", "Order Cancelled !");
+		    response.sendRedirect("message.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.getSession().setAttribute("msg", "Order Cancelled !");
-		response.sendRedirect("message.jsp");
+		
 	}
 
 	/**

@@ -11,16 +11,21 @@
 <%
 User auth = (User) request.getSession().getAttribute("auth");
 List<Order> orders = null;
+
 if (auth != null) {
 	request.setAttribute("person", auth);
 	JDBC_Order_Methods orderDao = new JDBC_Order_Methods(JDBCCon.getConnection());
 	orders = orderDao.userOrders(auth.getEmail());
-	if (orders.size() > 0 == false) {
-		request.getSession().setAttribute("msg", " You Don't Have any Order, ORDER !");
+
+	System.out.println("1 order size->");
+	if (orders == null || orders.size() <= 0) {
+		request.getSession().setAttribute("msg", " You Don't Have any Order, ORDER NOW cs!");
 		response.sendRedirect("message.jsp");
+		return;
 	}
 
 } else {
+	System.out.println("2 order size->");
 	response.sendRedirect("login.jsp");
 }
 DecimalFormat dcf = new DecimalFormat("#.##");
@@ -88,7 +93,14 @@ if (cart_list != null) {
 					<th scope="col">Total</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
+					<%
+					if (orders != null) {
+					%>
 					<th scope="col"><%=orders.get(0).getTotalAmmount()%></th>
+					<%
+					}
+					%>
+
 
 				</tr>
 			</thead>

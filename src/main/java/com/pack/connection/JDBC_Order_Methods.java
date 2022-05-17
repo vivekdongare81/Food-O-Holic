@@ -83,8 +83,9 @@ public class JDBC_Order_Methods {
         }catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+        }if(list.size()!=0) {
+        	 list.get(0).setTotalAmmount(sum);
         }
-        list.get(0).setTotalAmmount(sum);
 		return list;
     }
     

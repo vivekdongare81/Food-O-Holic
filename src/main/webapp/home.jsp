@@ -10,7 +10,6 @@ List <Product> products = pm.getAllProducts();
 %>
 
 
-
 <!doctype html>
 <html lang="en">
 
