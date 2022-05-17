@@ -32,7 +32,7 @@ if (!errorMessage.substring(0, 1).equals(" ")) {
 		<div style="font-size: 200px;"
 			class="row  text-center justify-content-center">
 			<h3 class="gradient-multiline">
-				<span>errorMessagege %></span>
+				<span><%= errorMessage %></span>
 			</h3>
 		</div>
 	</div>
