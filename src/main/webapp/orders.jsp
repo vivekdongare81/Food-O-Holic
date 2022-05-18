@@ -42,9 +42,9 @@ if (cart_list != null) {
 <%@include file="/components/header.jsp"%>
 <title>E-Commerce Cart</title>
 </head>
-<body>
+<body >
 	<%@include file="/components/navbar.jsp"%>
-	<div class="container">
+	<div class="container" >
 		<div class="card-header my-3">All Orders</div>
 	
 		<%

@@ -4,18 +4,16 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List"%>
 <%
- JDBC_Product_Methods pm = new JDBC_Product_Methods(JDBCCon.getConnection());
-List <Product> products = pm.getAllProducts();
-
+JDBC_Product_Methods pm = new JDBC_Product_Methods(JDBCCon.getConnection());
+List<Product> products = pm.getAllProducts();
 %>
-
 
 <!doctype html>
 <html lang="en">
 
 <head>
 
-<title>Food-0-holic</title>
+<title>Food-0-Holic</title>
 <%@ include file="components/header.jsp"%>
 </head>
 
@@ -98,18 +96,19 @@ List <Product> products = pm.getAllProducts();
 		<div class="row">
 
 			<%
- for(Product p : products){ %>
+			for (Product p : products) {
+			%>
 			<%
- String link = "data:image/png;base64,"+p.getBase64Image();
- %>
+			String link = "data:image/png;base64," + p.getBase64Image();
+			%>
 			<div class="col-3 px-2 py-2 pt-4">
 				<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
 					<img style="height: 200px; width: 100%;" class="card-img-top"
-						src=<%= link %>>
+						src=<%=link%>>
 					<div class="card-body">
-						<h5 class="card-title"><%= p.getName() %></h5>
+						<h5 class="card-title"><%=p.getName()%></h5>
 						<p class="text-bold">
-							<%= p.getPrice() %>
+							<%=p.getPrice()%>
 							/-
 						</p>
 						<p class="card-text">Some Context about Above Product</p>
@@ -118,7 +117,9 @@ List <Product> products = pm.getAllProducts();
 					</div>
 				</div>
 			</div>
-			<% } %>
+			<%
+			}
+			%>
 
 
 		</div>
@@ -144,10 +145,10 @@ List <Product> products = pm.getAllProducts();
 				<h4>Important Links</h4>
 				<p>
 				<ul type="none" id="nono">
-					<li>Home</li>
-					<li>Cart</li>
-					<li>Orders</li>
-					<li>Contact</li>
+					<li><a href="home.jsp">Home</a></li>
+					<li><a href="cart.jsp">Cart</a></li>
+					<li><a href="orders.jsp">Orders</a></li>
+					<li><a href="contact.jsp">Contact</a></li>
 				</ul>
 				</p>
 			</div>

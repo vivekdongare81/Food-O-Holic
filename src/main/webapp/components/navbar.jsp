@@ -36,6 +36,8 @@ User authh = (User) request.getSession().getAttribute("auth");
 
 					<li class="nav-item"><a class="nav-link " href="contact.jsp"
 						tabindex="-1" aria-disabled="true">CONTACT</a></li>
+			   <li class="nav-item"><a class="nav-link " href="admin.jsp"
+						tabindex="-1" aria-disabled="true"><b>ADMIN PANEL</b></a></li>
 				</ul>
 				<div class="d-flex text-danger">
 					<%

@@ -3,15 +3,11 @@ package com.pack.controller;
 import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import com.pack.connection.JDBCCon;
 import com.pack.connection.JDBC_Order_Methods;
-import com.pack.model.*;
-import com.pack.model.User;
+import com.pack.model.Cart;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,16 +15,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CheckOutServelet
+ * Servlet implementation class OrderControl
  */
-@WebServlet("/checkOutServelet")
-public class CheckOutServelet extends HttpServlet {
+@WebServlet("/OrderControl")
+public class OrderControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CheckOutServelet() {
+	public OrderControl() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -39,33 +35,31 @@ public class CheckOutServelet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = response.getWriter()) {
+			String action = request.getParameter("action");
+			String userEmail = request.getParameter("userEmail");
+			JDBC_Order_Methods orderM = new JDBC_Order_Methods(JDBCCon.getConnection());
+			// ArrayList<Cart> cart_list = (ArrayList<Cart>)
+			// request.getSession().getAttribute("cart-list");
 
-			ArrayList<Cart> cart_list = (ArrayList<Cart>) request.getSession().getAttribute("cart-list");
-			User auth = (User) request.getSession().getAttribute("auth");
+			if (action != null && userEmail != null) {
+				if (action.equals("cancel")) {
+					orderM.cancelOrderByAdmin(userEmail);
 
-			if (cart_list != null && auth != null) {
-				for (Cart c : cart_list) {
-					Order order = new Order();
-					order.setProductId(c.getId());
-					order.setUserEmail(auth.getEmail());
-					order.setQuantity(c.getQuantity());
-					order.setAddress(auth.getAddress());
+				} else if (action.equals("delivered")) {
 
-					JDBC_Order_Methods m = new JDBC_Order_Methods(JDBCCon.getConnection());
-					boolean result = m.insertOrder(order);
-
+					orderM.deliverdOrderByAdmin(userEmail);
+				} else if (action.equals("onWay")) {
+					orderM.onwayOrderByAdmin(userEmail);
 				}
-				cart_list.clear();
-				response.sendRedirect("orders.jsp");
+				response.sendRedirect("admin.jsp");
 			} else {
-				if (auth == null) {
-					response.sendRedirect("login.jsp");
-				}
-				response.sendRedirect("cart.jsp");
+				// todo --set attribute
+				response.sendRedirect("message.jsp");
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -76,7 +70,6 @@ public class CheckOutServelet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

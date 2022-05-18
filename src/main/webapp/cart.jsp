@@ -42,7 +42,8 @@ body {
 </head>
 <body style="background-color: #9A616D !important;">
 	<%@include file="/components/navbar.jsp"%>
-
+<hr>
+<hr>
 	<div class="container mt-5  ">
 
 		<table class="table table-light">

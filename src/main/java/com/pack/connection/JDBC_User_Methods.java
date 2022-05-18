@@ -31,6 +31,7 @@ public class JDBC_User_Methods {
 				user.setEmail(rs.getString("Email"));
 				user.setPreferredType(rs.getString("PrefferedType"));
 				user.setPassword(rs.getString("Password"));
+			    user.setAddress(rs.getString("Address"));
 			}
 
 		} catch (Exception e) {
@@ -75,6 +76,7 @@ public class JDBC_User_Methods {
 			user.setName(name);
 			user.setEmail(email);
 			user.setPreferredType(pt);
+			user.setAddress(add);
 		}
 
 		return user;

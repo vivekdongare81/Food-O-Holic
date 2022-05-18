@@ -12,7 +12,7 @@ public class JDBCCon {
 		if (connection == null) {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "vivekkasql");
-			System.out.println("connected");
+			System.out.println("connected to db");
 
 		}
 		return connection;

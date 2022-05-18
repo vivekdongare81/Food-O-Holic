@@ -22,12 +22,8 @@ public class AddToCartServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 
 		try (PrintWriter out = response.getWriter()) {
-//        	out.print("add to cart servlet");
 
-//          response.setContentType("application/json");
-//        	response.setCharacterEncoding("UTF-8");
-
-			ArrayList<Cart> cartList = new ArrayList<>();
+    	ArrayList<Cart> cartList = new ArrayList<>();
 			int id = Integer.parseInt(request.getParameter("id"));
 			Cart cm = new Cart();
 			cm.setId(id);

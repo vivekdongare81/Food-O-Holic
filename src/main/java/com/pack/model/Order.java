@@ -5,15 +5,8 @@ public class Order extends Product {
 	public String UserEmail;
 	public String Status;
 	public Integer Quantity;
-
-	public Integer getQuantity() {
-		return Quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		Quantity = quantity;
-	}
-
+    public String Address;
+	
 	private Integer Ammount;
 
 	public Order() {
@@ -51,6 +44,22 @@ public class Order extends Product {
 	public void setProductId(Integer productId) {
 		ProductId = productId;
 	}
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
+	public Integer getQuantity() {
+		return Quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		Quantity = quantity;
+	}
+
 
 	public String getUserEmail() {
 		return UserEmail;
