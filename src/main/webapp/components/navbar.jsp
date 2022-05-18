@@ -25,19 +25,22 @@ User authh = (User) request.getSession().getAttribute("auth");
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<div class=" text-bold text-primary mx-2">Food-0-Holic</div>
+				<div class=" label text-bold text-primary mx-2">Food-0-Holic</div>
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="home.jsp">HOME</a></li>
-					<li class="nav-item"><a class="nav-link" href="cart.jsp">CART</a>
+						aria-current="page" href="home.jsp"><b>HOME</b></a></li>
+					<li class="nav-item"><a class="nav-link" href="cart.jsp"><b>CART</b></a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="orders.jsp">ORDERS</a>
+					<li class="nav-item"><a class="nav-link" href="orders.jsp"><b>ORDERS</b></a>
 					</li>
 
 					<li class="nav-item"><a class="nav-link " href="contact.jsp"
-						tabindex="-1" aria-disabled="true">CONTACT</a></li>
-			   <li class="nav-item"><a class="nav-link " href="admin.jsp"
-						tabindex="-1" aria-disabled="true"><b>ADMIN PANEL</b></a></li>
+						tabindex="-1" aria-disabled="true"><b>CONTACT</b></a></li>
+			  
+			     <% if(authh!=null && authh.getRole()==1){ %>
+			    	 <li class="nav-item"><a class="nav-link " href="admin.jsp"	tabindex="-1" aria-disabled="true"><b>ADMIN PANEL</b></a></li>
+			    <%  } %>
+					
 				</ul>
 				<div class="d-flex text-danger">
 					<%
@@ -56,13 +59,13 @@ User authh = (User) request.getSession().getAttribute("auth");
 						<%
 						if (authh == null) {
 						%>
-						<a class="nav-link" href="login.jsp">SIGN IN</a>
-						<a class="nav-link" href="register.jsp">REGISTER</a>
+						<a class="nav-link" href="login.jsp"><b>SIGN IN</b></a>
+						<a class="nav-link" href="register.jsp"><b>REGISTER</b></a>
 						<%
 						} else {
 						%>
 
-						<a class="nav-link text-danger" href="logout">LOGOUT</a>
+						<a class="nav-link text-danger" href="logout"><b>LOGOUT</b></a>
 						<%
 						}
 						%>

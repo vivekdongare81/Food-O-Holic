@@ -1,9 +1,19 @@
 
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page import="com.pack.connection.JDBCCon"%>
+<% 	
+User auth = (User) request.getSession().getAttribute("auth");
+
+if(auth!= null && auth.getRole()!=1){
+	request.getSession().setAttribute("msg", "Access Denied, You are not Admin !");
+	response.sendRedirect("message.jsp");
+}
+	%>
+
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="components/header.jsp"%>
@@ -68,7 +78,7 @@
 											<label class="form-label" for="form2Example27">Category
 												Type</label> <select name="category1" class="form-select"
 												aria-label="Default select example">
-												<option  value="All" selected>All</option>
+												<option value="All" selected>All</option>
 												<option value="South">South</option>
 												<option value="North">North</option>
 												<option value="Chinese">Chinese</option>

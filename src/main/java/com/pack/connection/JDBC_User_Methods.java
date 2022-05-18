@@ -32,6 +32,7 @@ public class JDBC_User_Methods {
 				user.setPreferredType(rs.getString("PrefferedType"));
 				user.setPassword(rs.getString("Password"));
 			    user.setAddress(rs.getString("Address"));
+			    user.setRole(rs.getInt("Role"));
 			}
 
 		} catch (Exception e) {

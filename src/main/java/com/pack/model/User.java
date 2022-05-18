@@ -60,7 +60,9 @@ public class User {
 	public int getRole() {
 		return Role;
 	}
-
+	public void setRole(int i) {
+		this.Role=i;
+	}
 	public String getAddress() {
 		return Address;
 	}

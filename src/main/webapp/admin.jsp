@@ -12,7 +12,10 @@
 <%
 User auth = (User) request.getSession().getAttribute("auth");
 ArrayList<String> users = null;
-
+if(auth!= null && auth.getRole()!=1){
+	request.getSession().setAttribute("msg", "Access Denied, You are not Admin !");
+	response.sendRedirect("message.jsp");
+}
 if (auth != null) {
 	request.setAttribute("person", auth);
 	JDBC_Order_Methods orderDao = new JDBC_Order_Methods(JDBCCon.getConnection());
