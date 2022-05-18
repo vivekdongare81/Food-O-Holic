@@ -39,6 +39,15 @@ public class CheckOutServelet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try (PrintWriter out = response.getWriter()) {
 
 			ArrayList<Cart> cart_list = (ArrayList<Cart>) request.getSession().getAttribute("cart-list");
@@ -50,34 +59,32 @@ public class CheckOutServelet extends HttpServlet {
 					order.setProductId(c.getId());
 					order.setUserEmail(auth.getEmail());
 					order.setQuantity(c.getQuantity());
-					order.setAddress(auth.getAddress());
-
+					if(request.getParameter("DeliveryAdd")==null) {
+						 order.setAddress(c.getAddress());
+					}else {
+						order.setAddress(request.getParameter("DeliveryAdd"));
+					}
+				
+       
 					JDBC_Order_Methods m = new JDBC_Order_Methods(JDBCCon.getConnection());
 					boolean result = m.insertOrder(order);
 
 				}
 				cart_list.clear();
 				response.sendRedirect("orders.jsp");
+				return;
 			} else {
 				if (auth == null) {
 					response.sendRedirect("login.jsp");
+					return;
 				}
 				response.sendRedirect("cart.jsp");
+				return;
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

@@ -3,6 +3,15 @@ package com.pack.model;
 public class Cart extends Product {
 	private int quantity;
 
+	private String Address;
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
 	public Cart() {
 	}
 
@@ -13,5 +22,7 @@ public class Cart extends Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
+	
 
 }

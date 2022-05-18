@@ -31,7 +31,7 @@ public class JDBC_Order_Methods {
 			pst.setInt(2, model.getProductId());
 			pst.setInt(3, model.getQuantity());
 			pst.setString(4, model.getAddress());
-
+          
 			pst.executeUpdate();
 			result = true;
 		} catch (SQLException e) {
@@ -63,6 +63,7 @@ public class JDBC_Order_Methods {
 					order.setName(product.getName());
 					order.setType(product.getType());
 					order.setStatus(rs.getString("Status"));
+					order.setAddress(rs.getString("Address"));
 					order.setPrice(product.getPrice() * rs.getInt("Quantity"));
 					order.setQuantity(rs.getInt("Quantity"));
 					sum += product.getPrice() * rs.getInt("Quantity");

@@ -12,7 +12,7 @@
 <%
 User auth = (User) request.getSession().getAttribute("auth");
 ArrayList<String> users = null;
-if(auth!= null && auth.getRole()!=1){
+if (auth != null && auth.getRole() != 1) {
 	request.getSession().setAttribute("msg", "Access Denied, You are not Admin !");
 	response.sendRedirect("message.jsp");
 }
@@ -62,15 +62,15 @@ if (cart_list != null) {
 
 			</div>
 		</div>
-		
+
 		<div class="col-3 px-2 py-2 pt-4">
-				<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-					
-					<div class="card-body">
-						<a href="addProductByAdmin.jsp"
-							class="btn btn-primary mx-2 my-2">Add a Product</a>
-					</div>
+			<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+
+				<div class="card-body">
+					<a href="addProductByAdmin.jsp" class="btn btn-primary mx-2 my-2">Add
+						a Product</a>
 				</div>
+			</div>
 		</div>
 		<hr>
 		<table class="table table-light">
@@ -124,14 +124,15 @@ if (cart_list != null) {
 					<thead>
 
 
-						<th scope="col"><span class="bg-dark text-white">Total Amount </span> - <%=orders.get(0).getTotalAmmount()%></th>
-						<th scope="col"><span class="bg-dark text-white"> Delivery Address </span> - <%=ss[1]%></th>
+						<th scope="col"><span class="bg-dark text-white">Total
+								Amount </span> - <%=orders.get(0).getTotalAmmount()%></th>
+						<th scope="col"><span class="bg-dark text-white">
+								Delivery Address </span> - <%=ss[1]%></th>
 						<th scope="col"></th>
 						<th scope="col"><a class="mx-3 btn btn-sm btn-danger"
 							href="OrderControl?action=cancel&userEmail=<%=ss[0]%>">
 								Cancel</a><a class="mx-3 btn btn-sm btn-primary"
-							href="OrderControl?action=onWay&userEmail=<%=ss[0]%>">On
-								Way</a></th>
+							href="OrderControl?action=onWay&userEmail=<%=ss[0]%>">On Way</a></th>
 						<th scope="col"><a class="mx-3 btn btn-sm btn-success"
 							href="OrderControl?action=delivered&userEmail=<%=ss[0]%>">
 								Delivered</a></th>

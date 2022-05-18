@@ -42,8 +42,8 @@ body {
 </head>
 <body style="background-color: #9A616D !important;">
 	<%@include file="/components/navbar.jsp"%>
-<hr>
-<hr>
+	<hr>
+	<hr>
 	<div class="container mt-5  ">
 
 		<table class="table table-light">
@@ -92,12 +92,30 @@ body {
 				%>
 			</tbody>
 		</table>
-		<div class="d-flex py-3 bg-dark text-white rounded">
-			<h3>
-				Total Price: <span class="text-bold"><i> Rs.
-						${(total>0)?dcf.format(total):0} /- </i></span>
-			</h3>
-			<a class="mx-3 btn btn-primary" href="checkOutServelet">Check Out</a>
+		<div class=" row d-flex py-3 bg-dark text-white rounded">
+			<div class="col-12">
+
+				<span class="text-bold"><h5>Total Price:</h5> <i>
+						<h3>Rs. ${(total>0)?dcf.format(total):0} /-</h3>
+				</i> </span>
+			</div>
+
+			<br>
+			<form method="post" action="checkOutServelet" >
+			<div class="form-outline mb-1">
+				<label class="form-label" for="form2Example27"><h5>Address
+						for Delivery</h5></label> <input type="text" id="form2Example27"
+					placeholder="Enter Address" class="form-control form-control"
+					name="DeliveryAdd" />
+
+			</div>
+			<br>
+			
+				<div class="col-3">
+					<button class="mx-3 mt-3 btn btn-sm btn-primary" type="submit"><a  >Checkout</a></button>
+				</div>
+			</form>
+
 		</div>
 	</div>
 

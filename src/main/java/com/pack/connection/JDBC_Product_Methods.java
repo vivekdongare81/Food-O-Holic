@@ -129,6 +129,7 @@ public class JDBC_Product_Methods {
 						row.setType(rs.getString("Type"));
 						row.setPrice(rs.getInt("Price") * item.getQuantity());
 						row.setQuantity(item.getQuantity());
+						
 						book.add(row);
 					}
 

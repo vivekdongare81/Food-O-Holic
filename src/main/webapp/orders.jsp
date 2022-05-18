@@ -17,7 +17,7 @@ if (auth != null) {
 	JDBC_Order_Methods orderDao = new JDBC_Order_Methods(JDBCCon.getConnection());
 	orders = orderDao.userOrders(auth.getEmail());
 
-	System.out.println("1 order size->");
+	
 	if (orders == null || orders.size() <= 0) {
 		request.getSession().setAttribute("msg", " You Don't Have any Order, ORDER NOW!");
 		response.sendRedirect("message.jsp");
@@ -25,7 +25,7 @@ if (auth != null) {
 	}
 
 } else {
-	System.out.println("2 order size->");
+	
 	response.sendRedirect("login.jsp");
 }
 DecimalFormat dcf = new DecimalFormat("#.##");
@@ -51,7 +51,10 @@ if (cart_list != null) {
 		if (orders != null && orders.size() > 0 ) {
 		%>
 		<div>
-			Order Status - <b><%=orders.get(0).getStatus()%> </b>
+			Order Status - <b><%= orders.get(0).getStatus()%> </b>
+		</div>
+		<div>
+			Delivery Address - <b><%= orders.get(0).getAddress() %> </b>
 		</div>
 		<%
 		}
