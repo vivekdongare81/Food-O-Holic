@@ -1,5 +1,5 @@
 # Food-O-Holic
-An Food Ordering website based on Java Servlets and JSPs with MySQL Connectivity using JDBC. 🍴
+An Food Ordering website based on Java Servlets and JSPs with MySQL Database Integration using JDBC. 🍴
 
 < Views >
 
